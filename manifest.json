@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "CSDX",
+  "version": "1.0",
+  "description": "屏蔽CSDN，净化Google搜索结果",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "*://*.google.com/search*",
+    "*://*.google.co.uk/search*",
+    "*://*.google.co.jp/search*",
+    "*://*.google.de/search*",
+    "*://*.google.fr/search*",
+    "*://*.google.ca/search*",
+    "*://*.google.com.au/search*",
+    "*://*.google.co.in/search*",
+    "*://*.google.com.hk/search*",
+    "*://*.google.co.kr/search*",
+    "*://*.google.com.sg/search*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/search*",
+        "*://*.google.co.uk/search*",
+        "*://*.google.co.jp/search*",
+        "*://*.google.de/search*",
+        "*://*.google.fr/search*",
+        "*://*.google.ca/search*",
+        "*://*.google.com.au/search*",
+        "*://*.google.co.in/search*",
+        "*://*.google.com.hk/search*",
+        "*://*.google.co.kr/search*",
+        "*://*.google.com.sg/search*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}

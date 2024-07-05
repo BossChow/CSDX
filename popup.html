@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSDX</title>
+    <style>
+      body {
+        width: 300px;
+        padding: 20px;
+        font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        position: relative;
+      }
+      h3 {
+        text-align: center;
+        color: #2a9d8f;
+        margin-top: 0;
+      }
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #2a9d8f;
+      }
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 24px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: #2a9d8f;
+      }
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+      .toggle-label {
+        margin-left: 10px;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #2a9d8f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #238b7e;
+      }
+      #status {
+        text-align: center;
+        margin-top: 10px;
+        color: #2a9d8f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="close-button" id="closeButton">&times;</div>
+    <h3>CSDX - 缺一个响亮的Slogan</h3>
+    <p>在搜索结果中屏蔽CSDN</p>
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" id="enableToggle" />
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">启用屏蔽</span>
+    </div>
+    <textarea
+      id="blockedSites"
+      placeholder="每行输入一个要屏蔽的网站域名（例如：csdn.net）"
+    ></textarea>
+    <button id="saveButton">保存设置</button>
+    <div id="status"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>
